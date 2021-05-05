@@ -9,6 +9,5 @@ RUN apt-get update \
 
 RUN mv /usr/bin/git /usr/bin/git.bin
 COPY git /usr/bin/git
-COPY --from=builder qbec jsonnet-qbec /usr/bin/
 
 USER argocd
