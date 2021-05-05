@@ -27,4 +27,4 @@ jobs:
           username: "Loki-Afro"
           password: ${{ secrets.GH_REGISTRY_SECRET }}
           repository: Loki-Afro/argocd-repo-server-with-tooling
-          tags: master-$(date +%s)
+          tags: master
