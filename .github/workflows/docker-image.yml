@@ -12,7 +12,19 @@ jobs:
 
     runs-on: ubuntu-latest
 
+#    steps:
+#    - uses: actions/checkout@v2
+#    - name: Build the Docker image
+#      run: docker build . --file Dockerfile --tag argocd-repo-server-with-tooling:master-$(date +%s)
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag argocd-repo-server-with-tooling:master-$(date +%s)
+      - name: "Build:checkout"
+        uses: actions/checkout@v2
+      - name: 'Build:dockerimage'
+        uses: docker/build-push-action@v1
+        with:
+          registry: ghcr.io
+          username: "Loki-Afro"
+          password: ${{ secrets.GH_REGISTRY_SECRET }}
+          repository: Loki-Afro/argocd-repo-server-with-tooling
+          tags: master-$(date +%s)
